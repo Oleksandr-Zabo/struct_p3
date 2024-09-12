@@ -33,6 +33,12 @@ public:
 		setNumber(number);
 	}
 
+	//del number
+	void del_num() {
+		delete _number;
+		_number = nullptr;
+	}
+
 
 	//print info
 	void printInfo() {
@@ -87,6 +93,10 @@ public:
 
 	~User()
 	{
+		for (int i = 0; i < size; i++) {
+			cars[i].del_num();
+			
+		}
 		delete[] cars;
 		allocated_memory = 10;
 	}
@@ -213,7 +223,7 @@ int main()
 			cout << "0 - Exit" << endl;
 			cout << "1 - Edit car" << endl;
 			cout << "2 - View All Items" << endl;
-			cout << "3 -Search for a car by number" << endl;
+			cout << "3 - Search for a car by number" << endl;
 
 			cout << "Enter your value: ";
 			cin >> action;
@@ -246,17 +256,15 @@ int main()
 			string color;
 			cin.ignore();
 			cout << "Enter car color: ";
-			getline(cin, color);
+			cin >> color;
 			car.setColor(color);
 
 			string model;
-			cin.ignore();
 			cout << "Enter car model: ";
-			getline(cin, model);
+			cin >> model;
 			car.setModel(model);
 
 			int number;
-			cin.ignore();
 			cout << "Enter car number: ";
 			cin >> number;
 			car.setNumber(number);
